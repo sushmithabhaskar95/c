@@ -1,0 +1,21 @@
+<h1>Add Roles</h1>
+<div class="container">
+  <div class="">
+    <%= form_for(:role, :url => { :contoller=>'roles',  :action=>'create'}) do |f| %> 
+      
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      </br>
+      </br>
+      <%= f.label :active %>
+      <%= check_box("active", tag.id, {checked: true}) %>
+      </br>
+      </br>
+      <%= f.submit "create role"  %>
+      </br>
+      </br>
+
+    <% end %>
+    <div>
+  </div>
+

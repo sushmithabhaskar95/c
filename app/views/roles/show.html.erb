@@ -1,0 +1,22 @@
+<table border="1">
+<tr>
+<th>
+Name
+</th>
+<th>
+Active
+</th>
+<th>
+Manage
+</th>
+</tr>
+<%= @role.each do |f| %>
+<tr>
+<td><%= f.id %><%=  f.name %></td>
+<td><%= f.active %></td>
+<td><%= link_to 'Edit',edit_role_path(f) %>
+<%= link_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' } %>
+</td>
+</tr>
+<% end %>
+</table>

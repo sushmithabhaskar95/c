@@ -1,0 +1,17 @@
+<h1>Cricket Admin Page </h1>
+
+<% if user_signed_in?   %>
+    <h2><%= link_to "Profile", user_path(current_user)  %></h2>
+    <h2><%= link_to "Add role" , new_role_path %></h2>
+    <h2> <%= link_to "Modify Users", users_path%></h2>  
+<%elsif user_signed_in? && current_user.is_Player? %>
+
+<h2><%= link_to "Profile", user_path(current_user)  %></h2>
+<%end%>
+
+
+
+
+
+
+
