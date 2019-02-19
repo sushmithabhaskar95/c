@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_04_121144) do
+ActiveRecord::Schema.define(version: 2019_02_19_090032) do
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2019_02_04_121144) do
     t.string "ground_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "caption_id"
+    t.integer "captain_id"
   end
 
   create_table "user_roles", force: :cascade do |t|

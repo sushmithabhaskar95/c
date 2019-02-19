@@ -4,35 +4,33 @@ class TeamsController < ApplicationController
           end
 
           def show
-
             @team=Team.all
-            redirected_to @team
-
           end
 
-
             def create 
+              @team = Team.new(team_params)
                 if @team.save
                   redirect_to @team
                 else 
                   render 'new'
                 end
-
             end
 
             def edit
             end
 
-            def load_users
-              @user = User.all
-                respond_to do |format|
-                  format.html
-                  format.js
-                  format.json
-                end
-
             
-            end
+    
+
+    def load_users
+      @query= User.includes(:roles).where(roles:{name:'Player'})
+      respond_to do |format|
+      format.html
+      format.js
+      format.json
+      end
+      @query = @query.where(["first_name LIKE?","%#{params[:search]}%"])
+    end
 
 
   private
@@ -41,7 +39,7 @@ class TeamsController < ApplicationController
     end
 
     def team_params
-      params.require(:user).permit(:team_name,:ground_name,:captain_id 
+      params.require(:team).permit(:team_name,:ground_name,:captain_id
                                    )
     end
 

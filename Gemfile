@@ -41,13 +41,9 @@ gem 'twitter-bootstrap-rails'
 # Use ActiveStorage variant
  gem 'mini_magick'
 
- gem 'jquery-rails'
-
-
-
- gem 'bootstrap-sass', '~> 3.4.0'
+gem 'jquery-rails'
+gem 'bootstrap-sass', '~> 3.4.0'
 gem 'sassc-rails', '>= 2.0.0'
-
 gem 'bootstrap-modal-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -1,2 +1,49 @@
 
-<%= link_to 'Link' ,load_users_teams_path, remote: true %>
+<div class="col-md-6 col-md-offset-3">
+<div class="container">
+
+<br>
+
+
+
+
+<%= form_for @team do |f| %>
+  
+  <div>
+  <% if @team.errors.any? %>
+  <div id="error_explanation">
+  <div class="alert alert-danger">
+    The form contains <%= pluralize(@team.errors.count, "error") %>.
+  </div>
+  <ul>
+            <% @team.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+             
+  </div>
+  <% end %>
+  </div>
+    <div class="form-group">
+    <%= f.label :team_name, class:'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :team_name %>
+    </div>
+    <br>
+    <div class="form-group">
+    <%= f.label :ground_name, class: 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :ground_name %>
+    </div>
+    <br>
+    <%= =%>
+    <%= f.hidden_field :captain_id,class: "select-id" %>
+    <%= link_to 'select captain',load_users_teams_path,remote: true, class: 'btn btn-default'   %>
+    <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, class: 'btn btn-primary' %>
+      <%= link_to t('.cancel', default:t("helpers.links.cancel")),
+                users_path, class:'btn btn-default' %>
+    </div>
+<% end %>
+</div>
+</div>

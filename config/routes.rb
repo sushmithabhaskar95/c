@@ -1,16 +1,6 @@
 Rails.application.routes.draw do
 
-
-  resources :teams do
-    collection do
-    get :load_users
-    end
-  end
-
-
-  devise_for :users, controllers: { registrations: 'users/registrations' }
-
-  # get    '/users',  to: 'users#new'
+# get    '/users',  to: 'users#new'
   # post    '/users',  to: 'users#create'
   # resources :users 
 
@@ -23,12 +13,16 @@ Rails.application.routes.draw do
   # post '/roles', to:'roles#create'
   # resources :roles
 
-
-  
   # get '/addrole', to: 'roles#new'
   # get '/adduser', to: 'users#new' 
 
+  resources :teams do
+    collection do
+    get :load_users
+    end
+  end
 
+  devise_for :users, controllers: { registrations: 'users/registrations' } 
   resources :user_roles
   resources :roles
   resources :users 
