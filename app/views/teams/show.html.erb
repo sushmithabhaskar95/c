@@ -1,2 +1,12 @@
-<h1>Teams#show</h1>
-<p>Find me in app/views/teams/show.html.erb</p>
+<table class="table table-striped">
+<tr><th>Id</th><th>Team Name</th><th>Ground Name</th><th>Captain Name</th><th>Manage</th></tr>
+<% @team.each do |f| %>
+<tr> <td><%= f.id  %></td> 
+     <td><%= f.team_name %></td>
+     <td><%= f.ground_name %></td>
+     <td><%= f.captain&.first_name %></td>
+     <td><%= link_to 'Add player' %></td>
+     <td><%= link_to 'Destroy',method: :destroy, data:{confirm:'Are you sure'}%></td>
+</tr>
+<%end%>
+</table>

@@ -1,13 +1,22 @@
 <h1>Cricket Admin Page </h1>
 
 <% if user_signed_in?   %>
-    <h2><%= link_to "Profile", user_path(current_user)  %></h2>
-    <h2><%= link_to "Add role" , new_role_path %></h2>
-    <h2> <%= link_to "Modify Users", users_path%></h2>  
-    <h2><%= link_to "Manage teams",  new_team_path%></h2>
-<%elsif user_signed_in? && current_user.is_Player? %>
+    <h2><%= link_to t('.profile', default: t("helpers.links.profile")),
+    user_path(current_user) , class: 'btn btn-default btn-xs' %></h2>
 
-<h2><%= link_to "Profile", user_path(current_user)  %></h2>
+    <h2><%= link_to_if(current_user.admin?, t('.add_role', default: t("helpers.links.add_role")),
+    new_role_path,method: :get, class: 'btn btn-default btn-xs'){} %></h2>
+
+    <h2><%= link_to t('.modify_users', default: t("helpers.links.modify_users")),
+    users_path , class: 'btn btn-default btn-xs' %></h2>
+
+
+    <h2><%= link_to t('.create_teams,', default: t("helpers.links.create_teams")),
+    new_team_path, class: 'btn btn-default btn-xs' %></h2>
+
+    <h2><%= link_to t('.add_players,', default: t("helpers.links.add_players")),
+    teams_path, class: 'btn btn-default btn-xs' %></h2>
+    
 <%end%>
 
 

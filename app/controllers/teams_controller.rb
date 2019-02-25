@@ -19,17 +19,22 @@ class TeamsController < ApplicationController
             def edit
             end
 
-            
+      
     
 
     def load_users
-      @query= User.includes(:roles).where(roles:{name:'Player'})
+      @player= User.includes(:roles).where(roles:{name:'Player'})
       respond_to do |format|
       format.html
       format.js
       format.json
       end
-      @query = @query.where(["first_name LIKE?","%#{params[:search]}%"])
+      @player = @player.where(["first_name LIKE?","%#{params[:search]}%"])
+    end
+
+    def destroy
+     @team.destroy
+     redirect_to '/'
     end
 
 

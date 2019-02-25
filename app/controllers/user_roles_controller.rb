@@ -16,7 +16,7 @@ class UserRolesController < ApplicationController
     params[:user_role][:role_id].each do |role_id|
       @user.user_roles.create(role_id: role_id)
     end
-    render 'show'
+  #  render 'show'
   end
   
   

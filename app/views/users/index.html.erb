@@ -33,12 +33,10 @@
           <%= link_to t('.show', default: t("helpers.links.show")),
                       user_path(user), class: 'btn btn-default btn-xs' %>
 
-          <% if can? :update, user %> 
-          <%= link_to t('.assign_role', default: t("helpers.links.assign")),
-                     new_user_role_path(user_id: user.id),
-                     method: :get,
-                     class: 'btn btn-default btn-xs' %>
-          <%end%>
+          <%= link_to_if(current_user.admin?, t('.assign_role', default: t("helpers.links.assign")),
+                      new_user_role_path(user_id: user.id),
+                      method: :get,
+                      class: 'btn btn-default btn-xs'){} %>
         
           <% if can? :update, user%>       
           <%= link_to t('.edit', default: t("helpers.links.edit")),
@@ -46,22 +44,22 @@
           <%end%>
           
 
-          <% if can? :update, user%> 
+          <% if can? :destroy, user%> 
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       user_path(user),
                       method: :delete,
                       data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) },
                       class: 'btn btn-xs btn-danger' %>             
-          </td>
           <%end%>
+          
+          </td>
+          
          
       </tr>
      <%end%>
   </tbody>
 </table>
 
-<%= link_to t('.new', default: t("helpers.links.new")),
-            new_user_path,
-            class: 'btn btn-primary' %>
+
 
  <%= will_paginate @user,renderer: BootstrapPagination::Rails,previous_label:"old",next_label: "new",inner_window:1,outer_window:1 %>             

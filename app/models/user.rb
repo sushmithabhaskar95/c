@@ -7,22 +7,23 @@ class User < ApplicationRecord
    validates :email, presence: true, length: { maximum: 255 },
                      format: { with: VALID_EMAIL_REGEX },
                      uniqueness: true
-  belongs_to :team,optional: true
-  
+  belongs_to :team  ,optional: true, foreign_key: :captain_id
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   mount_uploader :photo, PhotoUploader
-  def admin?
-    roles.find_by_name('admin').present?
-  end
-
+  
 
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)
   end
-
-
+  
+  
+  def admin?
+    roles.pluck(:name).include? "Admin"
+  end
+  
 end
