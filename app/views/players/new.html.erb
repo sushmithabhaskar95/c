@@ -1,0 +1,35 @@
+
+<div class="col-md-6 col-md-offset-3">
+  <div class="container">
+    <br>
+    <h3>Add players to team <%= @team.team_name %></h3>
+      <%= form_for @player do |f| %>
+        
+        <table>
+        <tbody>
+        <%= f.hidden_field :team_id, :value=> @team.id %>
+          <tr>
+            <th>Player Id</th>
+            <th>Player Name</th>
+            <th>Select</th>
+          </tr>  
+          <% @user.each do |x| %>
+            <tr>
+              <td><%= x.id %></td>
+              <td><%= x.full_name %></td>
+              <td><%= check_box_tag 'users[]',x.id %></td>
+           </tr>
+        <% end %>
+        <tr>   
+          <td>   
+            <%= f.submit nil, class: 'btn btn-primary' %>
+            <%= link_to t('.cancel', default:t("helpers.links.cancel")),
+                root_path, class:'btn btn-default' %> 
+           </td> 
+          </tr>
+        </tbody>
+      </table> 
+    <% end %>
+  </div>
+</div>
+<%= will_paginate @user,renderer: BootstrapPagination::Rails,previous_label:"old",next_label: "new",inner_window:1,outer_window:1 %>             

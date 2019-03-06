@@ -3,9 +3,13 @@ class Team < ApplicationRecord
     has_many  :users, dependent: :destroy
     belongs_to :captain, class_name: 'User'
 
-    validates :ground_name, presence:true 
-    validates :team_name, presence:true 
-    validates :captain_id, presence:true,uniqueness:true
+    
+    has_many  :players,dependent: :destroy
+    
+
+    # validates :ground_name,presence:true 
+    # validates :team_name, presence:true 
+    # validates :captain_id,presence:true,uniqueness:true
   
 
 end

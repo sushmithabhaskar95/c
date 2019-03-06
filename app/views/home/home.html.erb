@@ -15,7 +15,7 @@
     new_team_path, class: 'btn btn-default btn-xs' %></h2>
 
     <h2><%= link_to t('.add_players,', default: t("helpers.links.add_players")),
-    teams_path, class: 'btn btn-default btn-xs' %></h2>
+     team_path(current_user), class: 'btn btn-default btn-xs' %></h2> 
     
 <%end%>
 

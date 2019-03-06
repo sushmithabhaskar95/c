@@ -26,5 +26,6 @@ Rails.application.routes.draw do
   resources :user_roles
   resources :roles
   resources :users 
+  resources :players
   root   'home#home'
 end

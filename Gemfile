@@ -14,6 +14,8 @@ gem 'devise'
 
 gem 'cancancan'
 
+gem 'pry', '~> 0.12.2'
+
 gem 'carrierwave'
 # Use sqlite3 as the database for Active Record
  gem 'sqlite3'

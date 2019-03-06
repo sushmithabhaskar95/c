@@ -5,8 +5,10 @@
      <td><%= f.team_name %></td>
      <td><%= f.ground_name %></td>
      <td><%= f.captain&.first_name %></td>
-     <td><%= link_to 'Add player' %></td>
-     <td><%= link_to 'Destroy',method: :destroy, data:{confirm:'Are you sure'}%></td>
+     <td><%= link_to 'Add player', new_player_path(team_id: f.id)   %></td>
+     <td><%= link_to t('.destroy', :default => t("helpers.links.destroy")),team_path(f),method: :delete,
+     data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) },
+     class: 'btn btn-xs btn-danger' %> </td>
 </tr>
 <%end%>
-</table>
+</table>    

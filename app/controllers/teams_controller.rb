@@ -10,7 +10,7 @@ class TeamsController < ApplicationController
             def create 
               @team = Team.new(team_params)
                 if @team.save
-                  redirect_to @team
+                  render @team
                 else 
                   render 'new'
                 end
@@ -18,9 +18,11 @@ class TeamsController < ApplicationController
 
             def edit
             end
+ 
+            def index
 
-      
-    
+            end
+               
 
     def load_users
       @player= User.includes(:roles).where(roles:{name:'Player'})
@@ -33,8 +35,9 @@ class TeamsController < ApplicationController
     end
 
     def destroy
+      @team = Team.find(params[:id])
      @team.destroy
-     redirect_to '/'
+     render 'show'
     end
 
 

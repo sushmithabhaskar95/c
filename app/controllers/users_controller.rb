@@ -43,9 +43,7 @@ class UsersController < ApplicationController
     
   end
 
-  def full_name
-    return "#{self.first_name} #{self.last_name}"
-  end
+ 
 
    private
     def set_user
