@@ -5,6 +5,8 @@ $("#modal-window").modal();
 $(document).on("click",".select-caption",function(e){
 $(".select-id").val($(this).data("id"))
 $(".form-controls").val($(this).data("name"))
-$(".modal").modal('hide')
 
+$(".modal").modal('hide')
+alert($(this).data("name"));
 });
+

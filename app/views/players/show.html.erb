@@ -1,0 +1,23 @@
+<div class="container" >
+<h1>Details of the Team</h1>
+<table class="table table-striped">
+<tr><td>Team Name</td>
+<td><%= @team.team_name %></td></tr>
+<tr><td>Captain Name</td>
+<td><%= @team.captain_name %></td></tr>
+<tr><td>Ground Name</td>
+<td><%= @team.ground_name %></tr></td>
+</table>
+<h1>Details of the Players  </h1>
+<table class="table table-striped">
+<tr><td>Players Name </td><td>Remove</td></tr>
+  <% @players.each do |f| %>
+  <tr><td><%= f.user.full_name %></td>
+  <td><%= link_to t('.destroy', :default => t("helpers.links.destroy")),f,
+ method: :delete,
+  data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) },
+  class: 'btn btn-xs btn-danger' %></td></tr>
+  <% end %>
+  </table>
+  </dl>
+  </div>

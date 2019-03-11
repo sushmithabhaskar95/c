@@ -3,12 +3,17 @@
 <% if user_signed_in?   %>
     <h2><%= link_to t('.profile', default: t("helpers.links.profile")),
     user_path(current_user) , class: 'btn btn-default btn-xs' %></h2>
-
+    
     <h2><%= link_to_if(current_user.admin?, t('.add_role', default: t("helpers.links.add_role")),
     new_role_path,method: :get, class: 'btn btn-default btn-xs'){} %></h2>
 
+    <%  if current_user.admin? %>
     <h2><%= link_to t('.modify_users', default: t("helpers.links.modify_users")),
     users_path , class: 'btn btn-default btn-xs' %></h2>
+    <% else %>
+    <h2><%= link_to t('.show_users', default: t("helpers.links.show_users")),
+    users_path , class: 'btn btn-default btn-xs' %></h2>
+    <% end %>
 
 
     <h2><%= link_to t('.create_teams,', default: t("helpers.links.create_teams")),

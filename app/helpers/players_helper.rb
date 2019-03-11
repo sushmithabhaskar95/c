@@ -1,5 +1,6 @@
 module PlayersHelper
-    def checked(area)
-        @players.user_id.nil? ? false : @player.user_id.match(area)
+    def checked(team,user)    
+        team.captain_id == user.id || (team.players.pluck(:user_id).include? user.id)  
     end
+    
 end

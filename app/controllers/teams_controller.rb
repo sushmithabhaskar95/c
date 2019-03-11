@@ -1,4 +1,9 @@
 class TeamsController < ApplicationController
+  
+          def index
+
+          end
+
           def new
             @team=Team.new
           end
@@ -10,7 +15,8 @@ class TeamsController < ApplicationController
             def create 
               @team = Team.new(team_params)
                 if @team.save
-                  render @team
+                  flash[:success] = "Team is created!"
+                  redirect_to @team
                 else 
                   render 'new'
                 end
@@ -19,17 +25,13 @@ class TeamsController < ApplicationController
             def edit
             end
  
-            def index
 
-            end
                
 
     def load_users
       @player= User.includes(:roles).where(roles:{name:'Player'})
       respond_to do |format|
-      format.html
-      format.js
-      format.json
+      format.js 
       end
       @player = @player.where(["first_name LIKE?","%#{params[:search]}%"])
     end
@@ -47,7 +49,7 @@ class TeamsController < ApplicationController
     end
 
     def team_params
-      params.require(:team).permit(:team_name,:ground_name,:captain_id
+      params.require(:team).permit(:team_name,:ground_name,:captain_id,:captain_name
                                    )
     end
 

@@ -17,7 +17,7 @@
             <tr>
               <td><%= x.id %></td>
               <td><%= x.full_name %></td>
-              <td><%= check_box_tag 'users[]',x.id %></td>
+              <td><%= check_box_tag  'users[]',x.id,checked(@team,x) %></td>
            </tr>
         <% end %>
         <tr>   

@@ -15,8 +15,9 @@ class UserRolesController < ApplicationController
     @user = User.find(params[:user_role][:user_id])   
     params[:user_role][:role_id].each do |role_id|
       @user.user_roles.create(role_id: role_id)
+      flash[:success] = "User Role is Created !"
     end
-  #  render 'show'
+    
   end
   
   
